@@ -109,7 +109,6 @@ def generate_all_plots(df):
     plot_area_vs_rent_by_zone(df, save_path='outputs/charts/area_vs_rent_by_zone.png')
     plot_avg_rent_by_zone(df, save_path='outputs/charts/avg_rent_by_zone.png')
 
-# Chama a função para gerar todos os gráficos
 generate_all_plots(df_clean)
 
 
