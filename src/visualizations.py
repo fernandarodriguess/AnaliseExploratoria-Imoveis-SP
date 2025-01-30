@@ -128,4 +128,8 @@ save_plot(plot_garage_vs_rent, df_clean, 'outputs/charts/garage_vs_rent.png')
 save_plot(plot_area_vs_rent_by_zone, df_clean, 'outputs/charts/area_vs_rent_by_zone.png')
 save_plot(plot_avg_rent_by_zone, df_clean, 'outputs/charts/avg_rent_by_zone.png')
 
-
+#plot_area_vs_rent(df_clean)
+#plot_bedrooms_vs_rent(df_clean)
+#plot_garage_vs_rent(df_clean)
+#plot_area_vs_rent_by_zone(df_clean)
+#plot_avg_rent_by_zone(df_clean)
