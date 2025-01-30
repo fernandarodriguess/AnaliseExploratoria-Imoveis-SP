@@ -100,15 +100,32 @@ if __name__ == "__main__":
     df_clean = load_data('data/processed/dataset_imoveis_sp_clean.csv')
 
 
-def generate_all_plots(df):
-    """Gera e salva todos os gráficos."""
+def save_plot(plot_function, df, save_path):
+    """
+    Executa uma função de plotagem e salva o gráfico gerado.
     
-    plot_area_vs_rent(df, save_path='outputs/charts/area_vs_rent.png')
-    plot_bedrooms_vs_rent(df, save_path='outputs/charts/bedrooms_vs_rent.png')
-    plot_garage_vs_rent(df, save_path='outputs/charts/garage_vs_rent.png')
-    plot_area_vs_rent_by_zone(df, save_path='outputs/charts/area_vs_rent_by_zone.png')
-    plot_avg_rent_by_zone(df, save_path='outputs/charts/avg_rent_by_zone.png')
+    Parâmetros:
+    - plot_function: Função de plotagem (ex: plot_area_vs_rent).
+    - df: DataFrame com os dados.
+    - save_path: Caminho onde o gráfico será salvo.
+    """
+    plot_function(df)
+    
+    # Salva o gráfico
+    plt.savefig(save_path, dpi=300, bbox_inches='tight')
+    print(f"Gráfico salvo em: {save_path}")
+    
+    plt.close()
 
-generate_all_plots(df_clean)
+
+df_clean = load_data('data/processed/dataset_imoveis_sp_clean.csv')
+
+os.makedirs('outputs/charts/', exist_ok=True)
+
+save_plot(plot_area_vs_rent, df_clean, 'outputs/charts/area_vs_rent.png')
+save_plot(plot_bedrooms_vs_rent, df_clean, 'outputs/charts/bedrooms_vs_rent.png')
+save_plot(plot_garage_vs_rent, df_clean, 'outputs/charts/garage_vs_rent.png')
+save_plot(plot_area_vs_rent_by_zone, df_clean, 'outputs/charts/area_vs_rent_by_zone.png')
+save_plot(plot_avg_rent_by_zone, df_clean, 'outputs/charts/avg_rent_by_zone.png')
 
 
