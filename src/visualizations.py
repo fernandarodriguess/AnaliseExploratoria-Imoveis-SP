@@ -1,13 +1,14 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import os
 
 def load_data(file_path):
     """Carrega o dataset limpo"""
     return pd.read_csv(file_path)
 
 def plot_area_vs_rent(df):
-    """Gráfico de disposição entre área e aluguel."""
+    """Gráfico de dispersão entre área e aluguel."""
     sns.scatterplot(data=df, x='area', y='rent')
     plt.title('Relação entre Área vs Aluguel')
     plt.xlabel('Área (m²)')
@@ -23,9 +24,9 @@ def plot_bedrooms_vs_rent(df):
     plt.show()
 
 def plot_garage_vs_rent(df):
-    """Gráfico de dispersão entre vagas na gareagem e aluguel."""
+    """Gráfico de dispersão entre vagas na garagem e aluguel."""
     sns.scatterplot(data=df, x='garage', y='rent')
-    plt.title('Relação entre vagas de Garagem vs Aluguel')
+    plt.title('Relação entre vagas na Garagem vs Aluguel')
     plt.xlabel('Quantidade de vagas (garagem)')
     plt.ylabel('Aluguel (R$)')
     plt.show()
@@ -70,6 +71,7 @@ def plot_avg_rent_by_zone(df):
     plt.xlabel('Zona')
     plt.ylabel('Média do Aluguel (R$)')
     plt.xticks(rotation=45)
+    plt.savefig('outputs/charts/plot_avg_rent_by_zone.png', dpi=300, bbox_inches='tight')
     plt.show()
 
 
@@ -90,16 +92,24 @@ def plot_avg_rent_by_property_type(df):
     plt.xlabel('Tipo de Moradia')
     plt.ylabel('Média do Aluguel (R$)')
     plt.xticks(rotation=45)
+    plt.savefig('outputs/charts/plot_avg_rent_by_property_type.png', dpi=300, bbox_inches='tight')
     plt.show()
 
 
 if __name__ == "__main__":
     df_clean = load_data('data/processed/dataset_imoveis_sp_clean.csv')
 
-    plot_area_vs_rent(df_clean)
-    plot_bedrooms_vs_rent(df_clean)
-    plot_garage_vs_rent(df_clean)
-    plot_area_vs_rent_by_zone(df_clean)
-    plot_avg_rent_by_zone(df_clean)
-    plot_avg_rent_by_property_type(df_clean)
+
+def generate_all_plots(df):
+    """Gera e salva todos os gráficos."""
+    
+    plot_area_vs_rent(df, save_path='outputs/charts/area_vs_rent.png')
+    plot_bedrooms_vs_rent(df, save_path='outputs/charts/bedrooms_vs_rent.png')
+    plot_garage_vs_rent(df, save_path='outputs/charts/garage_vs_rent.png')
+    plot_area_vs_rent_by_zone(df, save_path='outputs/charts/area_vs_rent_by_zone.png')
+    plot_avg_rent_by_zone(df, save_path='outputs/charts/avg_rent_by_zone.png')
+
+# Chama a função para gerar todos os gráficos
+generate_all_plots(df_clean)
+
 
