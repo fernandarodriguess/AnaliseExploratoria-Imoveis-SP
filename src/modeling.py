@@ -2,7 +2,6 @@ __all__ = [
     'train_model'
 ]
 
-import pandas as pd
 from sklearn.linear_model import LinearRegression
 
 def train_model(X_train, y_train):
