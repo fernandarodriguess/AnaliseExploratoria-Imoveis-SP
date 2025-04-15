@@ -2,6 +2,8 @@
 
 Esse projeto tem o intuito de mapear os principais bairros das zonas administrativas da cidade de São Paulo, a fim de treinar um modelo de Regressão Linear que possa prever os valores de aluguel.
 
+Até o momento, foi realizada a etapa de análise exploratória, na qual foram examinadas as distribuições das variáveis presentes na base de dados bruta, além da criação de visualizações gráficas para apoiar a compreensão dos padrões. Todo o processo está documentado no notebook: [Análise Exploratória de Dados](notebooks/01_data_exploration.ipynb).
+
 ## Arquitetura do projeto
 
 ```
@@ -48,33 +50,4 @@ O conjunto de dados brutos possui informações de 11.658 imóveis de diversas r
 - **rent**: o aluguel mensal do imóvel
 - **total**: o custo total do imóvel, incluindo aluguel, impostos e outras taxas
 
-Após a realização da limpeza e tratamento dos dados, foi possível obter um dataset com 3.913 registros de imóveis, contendo as seguintes colunas:
-
-- **area**: a área do imóvel em metros quadrados
-- **bedrooms**: o número de quartos na propriedade
-- **garage**: o número de vagas de estacionamento disponíveis na propriedade
-- **rent**: o aluguel mensal do imóvel
-- **zone_Centro**
-- **zone_Leste**
-- **zone_Norte**
-- **zona_Oeste**
-- **zona_Sul**
-- **type_Apartamento**
-- **type_Casa**
-- **type_Casa em condomínio**
-- **type_Studio e kitnet**
-
-## Treinamento
-No processo de treinamento, o código está modularizado e conta com as seguintes funções:
-
-- **split_data**: Divide os dados em treinamento e teste.
-- **train_model**: Treina o modelo de regressão linear.
-- **evaluate_model**: Calcula métricas de desempenho.
-- **predicted_rent**: Faz previsões com base em novos dados.
-- **save_metrics**: Salva métricas em um arquivo.
-
-## Avaliação das Métricas
-- **MAE** (Mean Absolute Error): 1102.0627
-- **RMSE** (Root Mean Squared Error): 1640.7997
-- **R²** (Coeficiente de Determinação): 0.5705
 
